@@ -15,6 +15,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  // Cloudflare Pages 部署：使用 cloudflare_module preset
+  // 本地 dev / build 不受影响，只在 nitro 输出时切换 runtime
+  nitro: {
+    preset: process.env.NITRO_PRESET || 'node-server'
+  },
+
   modules: ['@nuxtjs/i18n'],
 
   css: ['~/assets/scss/main.scss'],
