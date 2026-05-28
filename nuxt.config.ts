@@ -15,10 +15,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  // Cloudflare Pages 部署：使用 cloudflare_module preset
-  // 本地 dev / build 不受影响，只在 nitro 输出时切换 runtime
+  // Cloudflare Pages 会自动注入 CF_PAGES；本地默认仍走 node-server。
+  // 如需手动覆盖，可在构建环境设置 NITRO_PRESET。
   nitro: {
-    preset: process.env.NITRO_PRESET || 'node-server'
+    preset: process.env.NITRO_PRESET || (process.env.CF_PAGES ? 'cloudflare-pages' : 'node-server')
   },
 
   modules: ['@nuxtjs/i18n'],

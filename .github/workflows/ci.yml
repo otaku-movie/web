@@ -24,11 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Node 版本与 @types/node、Nuxt 4 支持范围对齐，使用 actions 自带 npm 缓存加速依赖安装
+      # Node 版本与 Nuxt 4 / vue-router 5 依赖的 engines 对齐，使用 actions 自带 npm 缓存加速依赖安装
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.18.0
           cache: npm
 
       # 使用 lockfile 严格安装，保证 CI 与开发机依赖一致
@@ -61,7 +61,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.18.0
           cache: npm
 
       - name: Install dependencies

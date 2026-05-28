@@ -4,6 +4,9 @@
   "type": "module",
   "private": true,
   "description": "Otaku Movie C 端官网（首页 / 下载 / 分享）",
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "build": "nuxt build --dotenv .env.production",
     "dev": "nuxt dev --port 3001 --dotenv .env.development",
@@ -19,13 +22,12 @@
     "marked": "^17.0.5",
     "nuxt": "^4.4.6",
     "reka-ui": "^2.9.8",
-    "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+    "vue": "^3.5.34"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.19.19",
     "husky": "^9.1.7",
     "sass": "^1.78.0",
     "typescript": "^5.5.0"
