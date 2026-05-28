@@ -1,0 +1,62 @@
+// 与 app 端 DESIGN.md 保持一致的核心色板
+$brand-primary: #1989fa;
+$brand-primary-deep: #0e6fd8;
+$brand-primary-light: #069ef0;
+$brand-purple: #5c3bff;
+
+$accent-warning: #ffa500;
+$accent-danger: #ff6b6b;
+$accent-success: #34a853;
+
+// 用于 hero 装饰光斑的现代柔光辅助色
+$accent-pink: #ff6aa6;
+$accent-orange: #ff9a5a;
+$accent-violet: #8b5cf6;
+$accent-cyan: #38bdf8;
+
+// 主题相关颜色：实际值由 _theme.scss 中 CSS variables 决定
+$surface-canvas: var(--mw-surface-canvas);
+$surface-card: var(--mw-surface-card);
+$surface-card-hover: var(--mw-surface-card-hover);
+$surface-inverse: var(--mw-surface-inverse);
+
+$text-primary: var(--mw-text-primary);
+$text-secondary: var(--mw-text-secondary);
+$text-tertiary: var(--mw-text-tertiary);
+
+$border-default: var(--mw-border-default);
+$border-subtle: var(--mw-border-subtle);
+$border-emphasis: var(--mw-border-emphasis);
+
+$shadow-card: var(--mw-shadow-card);
+$shadow-card-active: var(--mw-shadow-card-active);
+$shadow-popover: var(--mw-shadow-popover);
+$shadow-poster: var(--mw-shadow-poster);
+
+// 页面级辅助
+$hero-bg: var(--mw-hero-bg);
+$hero-glow: var(--mw-hero-glow);
+$overlay: var(--mw-overlay);
+$overlay-strong: var(--mw-overlay-strong);
+$overlay-tile: var(--mw-overlay-tile);
+
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-xl: 24px;
+
+$breakpoint-tablet: 960px;
+$breakpoint-mobile: 768px;
+
+$gradient-brand: linear-gradient(135deg, #{$brand-primary} 0%, #{$brand-primary-light} 100%);
+$gradient-hero: linear-gradient(135deg, #{$brand-primary} 0%, #{$brand-primary-deep} 55%, #{$brand-purple} 100%);
+
+// 现代柔光 hero 背景：浅底 + 多色 blob
+$gradient-hero-soft: radial-gradient(120% 80% at 12% 18%, rgba(139, 92, 246, 0.18) 0%, transparent 55%),
+  radial-gradient(90% 70% at 90% 0%, rgba(255, 154, 90, 0.20) 0%, transparent 60%),
+  radial-gradient(100% 80% at 80% 100%, rgba(56, 189, 248, 0.18) 0%, transparent 60%),
+  linear-gradient(180deg, #f7f8ff 0%, #ffffff 60%, #f1f5ff 100%);
+
+// 海报占位渐变
+$gradient-poster: linear-gradient(160deg, #1f2937 0%, #4f3bff 45%, #ff6aa6 100%);
+$gradient-poster-alt: linear-gradient(160deg, #0f172a 0%, #1989fa 50%, #38bdf8 100%);

@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "シネコ",
+    "tagline": "ポケットに映画館を ─ 席選び・チケット・特典を一つに"
+  },
+  "nav": {
+    "home": "ホーム",
+    "download": "ダウンロード",
+    "language": "言語"
+  },
+  "common": {
+    "loading": "読み込み中…",
+    "retry": "再読み込み",
+    "loadFailed": "読み込みに失敗しました。後ほど再度お試しください",
+    "notFound": "コンテンツが存在しないか、公開終了しました",
+    "appName": "シネコ",
+    "themeLight": "ライトモードに切り替え",
+    "themeDark": "ダークモードに切り替え"
+  },
+  "home": {
+    "heroChip": "映画体験を、もっとシンプルに",
+    "heroTitle": "シネコ で観たい映画を、すべて手のひらに",
+    "heroDesc": "リアルタイム上映情報、スマートな座席選択、チケットを一つに。気になる作品はそのまま友達にシェア。",
+    "ctaDownload": "今すぐダウンロード",
+    "ctaShare": "シェア機能を見る",
+    "stats": {
+      "rating": "App Store 評価",
+      "users": "アクティブユーザー",
+      "cinemas": "対応劇場"
+    },
+    "featuresTitle": "映画を愛するすべての人へ",
+    "featuresSubtitle": "作品選びから劇場入場まで、細部までこだわって",
+    "posterPrev": "前へ",
+    "posterNext": "次へ",
+    "feature": {
+      "ticket": {
+        "title": "オンライン座席予約",
+        "desc": "主要劇場に対応。座席をビジュアルで選び、行列に並ばずに決済。"
+      },
+      "showtime": {
+        "title": "上映情報をリアルタイム表示",
+        "desc": "新作公開・口コミ評価・特集記事をいち早くお届け。"
+      },
+      "wallet": {
+        "title": "チケットを一括管理",
+        "desc": "映画チケット・クーポン・ギフトをまとめて保管。シェアもできます。"
+      }
+    }
+  },
+  "download": {
+    "title": "シネコ をダウンロード",
+    "subtitle": "ご利用の端末を選んでスマホ映画館を始めよう",
+    "platform": {
+      "android": "Android",
+      "ios": "iOS"
+    },
+    "version": "バージョン",
+    "build": "ビルド",
+    "published": "公開日",
+    "minSupported": "対応OS最低バージョン",
+    "downloadAndroid": "Android APK をダウンロード",
+    "downloadIos": "App Store からダウンロード",
+    "currentDevice": "現在ご利用中の端末",
+    "comingSoon": "近日公開予定",
+    "forceUpdateTip": "今回のアップデートは強制更新です。今すぐ更新してください",
+    "releaseNotes": "更新情報",
+    "noReleaseNotes": "更新情報はまだありません"
+  },
+  "share": {
+    "movie": {
+      "promo": "シネコ で公開中",
+      "rating": "評価",
+      "duration": "上映時間 {minutes} 分",
+      "releaseDate": "公開日：{date}",
+      "synopsisTitle": "あらすじ",
+      "genresTitle": "ジャンル",
+      "openInApp": "App で開く",
+      "downloadHint": "App をインストールしていませんか？今すぐダウンロード",
+      "qrTip": "PC からアクセスの場合はスマホでQRコードを読み取ってください",
+      "viaApp": "シネコ 提供"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} シネコ. All rights reserved.",
+    "linksAria": "法的事項",
+    "links": {
+      "agreement": "利用規約",
+      "privacy": "プライバシーポリシー",
+      "sdk": "サードパーティ SDK 一覧",
+      "contact": "お問い合わせ"
+    }
+  },
+  "legal": {
+    "fallbackTitle": "法的事項",
+    "empty": "この規約はまだ公開されていません。しばらく経ってからご確認ください",
+    "chip": {
+      "terms": "利用規約",
+      "privacy": "プライバシーポリシー",
+      "sdk": "サードパーティ SDK 一覧",
+      "default": "法的事項"
+    },
+    "meta": {
+      "version": "バージョン",
+      "effectiveAt": "施行日",
+      "updatedAt": "最終更新日"
+    }
+  },
+  "error": {
+    "notFoundDesc": "ページが移動、削除されたか、URL が正しくない可能性があります。",
+    "defaultDesc": "一時的にご利用いただけません。時間をおいて再度お試しください。"
+  }
+}

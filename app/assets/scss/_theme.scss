@@ -1,0 +1,80 @@
+// 深浅主题的 CSS variables。SCSS 颜色变量在 _variables.scss 中通过 var(...) 引用这些值
+// 主题切换：在 <html data-theme="dark"> 上覆盖即可，所有页面/组件无需重新计算
+
+:root,
+:root[data-theme='light'] {
+  --mw-text-primary: #1f2937;
+  --mw-text-secondary: #4b5563;
+  --mw-text-tertiary: #9ca3af;
+
+  --mw-surface-canvas: #f7f8fa;
+  --mw-surface-card: #ffffff;
+  --mw-surface-card-hover: #fafbff;
+  --mw-surface-inverse: #111111;
+
+  --mw-border-default: #e6e6e6;
+  --mw-border-subtle: #eef0f3;
+  --mw-border-emphasis: rgba(15, 23, 42, 0.12);
+
+  --mw-shadow-card: 0 20px 40px -16px rgba(15, 23, 42, 0.15);
+  --mw-shadow-card-active: 0 28px 60px -18px rgba(25, 137, 250, 0.45);
+  --mw-shadow-popover: 0 16px 40px -12px rgba(15, 23, 42, 0.22);
+  --mw-shadow-poster: 0 40px 80px -28px rgba(8, 24, 70, 0.55);
+
+  // 页面级辅助
+  --mw-hero-bg: linear-gradient(180deg, #f7f8fc 0%, #ffffff 70%);
+  --mw-hero-glow: rgba(139, 92, 246, 0.18);
+
+  --mw-overlay: rgba(255, 255, 255, 0.78);
+  --mw-overlay-strong: rgba(255, 255, 255, 0.95);
+  --mw-overlay-tile: rgba(255, 255, 255, 0.7);
+
+  --mw-tag-brand-bg: rgba(25, 137, 250, 0.1);
+  --mw-tag-warning-bg: rgba(255, 165, 0, 0.12);
+
+  --mw-code-bg: #f2f4f7;
+  --mw-blockquote-bg: #e8f4ff;
+}
+
+:root[data-theme='dark'] {
+  --mw-text-primary: #f1f5f9;
+  --mw-text-secondary: #cbd5e1;
+  --mw-text-tertiary: #94a3b8;
+
+  --mw-surface-canvas: #0a1018;
+  --mw-surface-card: #121a2a;
+  --mw-surface-card-hover: #18223a;
+  --mw-surface-inverse: #f8fafc;
+
+  --mw-border-default: #1f2a3d;
+  --mw-border-subtle: #1a2336;
+  --mw-border-emphasis: rgba(255, 255, 255, 0.14);
+
+  --mw-shadow-card: 0 24px 48px -20px rgba(0, 0, 0, 0.65);
+  --mw-shadow-card-active: 0 28px 60px -18px rgba(25, 137, 250, 0.55);
+  --mw-shadow-popover: 0 20px 40px -12px rgba(0, 0, 0, 0.75);
+  --mw-shadow-poster: 0 40px 80px -28px rgba(0, 0, 0, 0.7);
+
+  --mw-hero-bg: radial-gradient(120% 80% at 75% 0%, rgba(139, 92, 246, 0.22) 0%, transparent 55%),
+    linear-gradient(180deg, #060914 0%, #0c1426 100%);
+  --mw-hero-glow: rgba(139, 92, 246, 0.3);
+
+  --mw-overlay: rgba(10, 16, 24, 0.72);
+  --mw-overlay-strong: rgba(18, 26, 42, 0.95);
+  --mw-overlay-tile: rgba(255, 255, 255, 0.06);
+
+  --mw-tag-brand-bg: rgba(56, 189, 248, 0.16);
+  --mw-tag-warning-bg: rgba(255, 165, 0, 0.18);
+
+  --mw-code-bg: #1a2336;
+  --mw-blockquote-bg: rgba(25, 137, 250, 0.12);
+
+  color-scheme: dark;
+}
+
+// 在切换主题瞬间为颜色相关属性加缓动，降低突变感
+* {
+  transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+  transition-duration: 0.18s;
+  transition-timing-function: ease;
+}

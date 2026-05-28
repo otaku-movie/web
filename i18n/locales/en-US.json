@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "シネコ",
+    "tagline": "Your pocket cinema — seats, tickets and rewards in one place"
+  },
+  "nav": {
+    "home": "Home",
+    "download": "Download",
+    "language": "Language"
+  },
+  "common": {
+    "loading": "Loading…",
+    "retry": "Reload",
+    "loadFailed": "Failed to load. Please try again later.",
+    "notFound": "Content not found or removed.",
+    "appName": "シネコ",
+    "themeLight": "Switch to light mode",
+    "themeDark": "Switch to dark mode"
+  },
+  "home": {
+    "heroChip": "Movies, made effortless",
+    "heroTitle": "Every movie you want to watch — on シネコ",
+    "heroDesc": "Live showtimes, smart seat picking and tickets in one wallet. Share your picks with friends.",
+    "ctaDownload": "Download now",
+    "ctaShare": "See sharing in action",
+    "stats": {
+      "rating": "App Store rating",
+      "users": "Active users",
+      "cinemas": "Partner cinemas"
+    },
+    "featuresTitle": "Designed for people who love movies",
+    "featuresSubtitle": "Every step from picking a film to checking in, carefully polished",
+    "posterPrev": "Previous",
+    "posterNext": "Next",
+    "feature": {
+      "ticket": {
+        "title": "Book seats online",
+        "desc": "Cinemas across the country. Visual seat picker. Skip the queue."
+      },
+      "showtime": {
+        "title": "Live showtimes & news",
+        "desc": "New releases, ratings and editorial picks delivered first."
+      },
+      "wallet": {
+        "title": "Tickets in one wallet",
+        "desc": "Movie tickets, coupons and gifts in one place. Easy to share."
+      }
+    }
+  },
+  "download": {
+    "title": "Download シネコ",
+    "subtitle": "Pick the build for your device and bring the cinema with you",
+    "platform": {
+      "android": "Android",
+      "ios": "iOS"
+    },
+    "version": "Version",
+    "build": "Build",
+    "published": "Released",
+    "minSupported": "Minimum OS",
+    "downloadAndroid": "Download Android APK",
+    "downloadIos": "Get it on App Store",
+    "currentDevice": "Detected device",
+    "comingSoon": "Coming soon",
+    "forceUpdateTip": "This is a mandatory update — please install it now",
+    "releaseNotes": "Release notes",
+    "noReleaseNotes": "No release notes yet"
+  },
+  "share": {
+    "movie": {
+      "promo": "Now showing on シネコ",
+      "rating": "Rating",
+      "duration": "{minutes} min",
+      "releaseDate": "Release: {date}",
+      "synopsisTitle": "Synopsis",
+      "genresTitle": "Genres",
+      "openInApp": "Open in app",
+      "downloadHint": "Don’t have the app yet? Download it",
+      "qrTip": "On desktop? Scan the QR code with your phone",
+      "viaApp": "Powered by シネコ"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} シネコ. All rights reserved.",
+    "linksAria": "Legal",
+    "links": {
+      "agreement": "Terms",
+      "privacy": "Privacy",
+      "sdk": "Third-party SDKs",
+      "contact": "Contact"
+    }
+  },
+  "legal": {
+    "fallbackTitle": "Legal",
+    "empty": "This document has not been published yet. Please check back later.",
+    "chip": {
+      "terms": "User Terms",
+      "privacy": "Privacy Policy",
+      "sdk": "Third-party SDK List",
+      "default": "Legal"
+    },
+    "meta": {
+      "version": "Version",
+      "effectiveAt": "Effective",
+      "updatedAt": "Last updated"
+    }
+  },
+  "error": {
+    "notFoundDesc": "This page may have moved, been removed, or the URL may be incorrect.",
+    "defaultDesc": "The service is temporarily unavailable. Please try again later."
+  }
+}

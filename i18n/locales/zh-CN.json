@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "シネコ",
+    "tagline": "口袋里的观影伙伴 · 选座、购票、票券一站搞定"
+  },
+  "nav": {
+    "home": "首页",
+    "download": "下载",
+    "language": "语言"
+  },
+  "common": {
+    "loading": "加载中…",
+    "retry": "重新加载",
+    "loadFailed": "加载失败，请稍后重试",
+    "notFound": "内容不存在或已下线",
+    "appName": "シネコ",
+    "themeLight": "切换到浅色模式",
+    "themeDark": "切换到深色模式"
+  },
+  "home": {
+    "heroChip": "影视生活，从未如此简单",
+    "heroTitle": "用 シネコ 看每一场想看的电影",
+    "heroDesc": "实时排片、智能选座、票券一处管理。还能把心仪的电影分享给朋友。",
+    "ctaDownload": "立即下载",
+    "ctaShare": "了解分享功能",
+    "stats": {
+      "rating": "App Store 评分",
+      "users": "活跃用户",
+      "cinemas": "覆盖影院"
+    },
+    "featuresTitle": "为热爱电影的你而设计",
+    "featuresSubtitle": "从挑片到入场，每一步都精心打磨",
+    "posterPrev": "上一张",
+    "posterNext": "下一张",
+    "feature": {
+      "ticket": {
+        "title": "在线选座购票",
+        "desc": "覆盖主流院线，可视化挑座位，下单不再排队。"
+      },
+      "showtime": {
+        "title": "实时排片与影讯",
+        "desc": "新片上映、口碑评分、独家专题，第一时间送达。"
+      },
+      "wallet": {
+        "title": "票券一处管理",
+        "desc": "电影票、优惠券、礼券统一收纳，支持分享与赠送。"
+      }
+    }
+  },
+  "download": {
+    "title": "下载 シネコ",
+    "subtitle": "选择适合你的设备，开启随身电影院",
+    "platform": {
+      "android": "Android",
+      "ios": "iOS"
+    },
+    "version": "版本",
+    "build": "Build",
+    "published": "上架时间",
+    "minSupported": "最低支持系统",
+    "downloadAndroid": "下载 Android APK",
+    "downloadIos": "App Store 下载",
+    "currentDevice": "检测到当前设备",
+    "comingSoon": "暂未发布，敬请期待",
+    "forceUpdateTip": "本次为强制更新版本，建议立即升级",
+    "releaseNotes": "更新日志",
+    "noReleaseNotes": "暂无更新说明"
+  },
+  "share": {
+    "movie": {
+      "promo": "正在 シネコ 上热映",
+      "rating": "评分",
+      "duration": "片长 {minutes} 分钟",
+      "releaseDate": "上映：{date}",
+      "synopsisTitle": "剧情简介",
+      "genresTitle": "类型",
+      "openInApp": "在 App 中查看",
+      "downloadHint": "尚未安装 App？立刻下载",
+      "qrTip": "在电脑上请用手机扫码访问",
+      "viaApp": "由 シネコ 提供"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} シネコ. All rights reserved.",
+    "linksAria": "法律条款",
+    "links": {
+      "agreement": "用户协议",
+      "privacy": "隐私政策",
+      "sdk": "第三方 SDK 清单",
+      "contact": "联系我们"
+    }
+  },
+  "legal": {
+    "fallbackTitle": "法律条款",
+    "empty": "该条款暂未发布，请稍后再来",
+    "chip": {
+      "terms": "用户协议",
+      "privacy": "隐私政策",
+      "sdk": "第三方 SDK 清单",
+      "default": "法律条款"
+    },
+    "meta": {
+      "version": "版本号",
+      "effectiveAt": "生效日期",
+      "updatedAt": "最近更新"
+    }
+  },
+  "error": {
+    "notFoundDesc": "页面可能已移动、删除或地址输入有误。",
+    "defaultDesc": "服务暂时不可用，请稍后重试或返回首页。"
+  }
+}
