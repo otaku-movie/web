@@ -278,6 +278,9 @@ const syncMotionPreference = () => {
 }
 
 onMounted(() => {
+  // 高亮电影不阻塞首屏 SSR：标题、说明和 CTA 先返回，轮播数据在客户端补齐。
+  void fetchHighlights()
+
   if (typeof window !== 'undefined') {
     motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)')
     syncMotionPreference()
@@ -312,8 +315,6 @@ const displayTitle = (item: HomeHighlightItem) => {
   if (!looksInvalid(original)) return original
   return name || original
 }
-
-await fetchHighlights()
 
 // 预加载所有 highlight 海报，避免切换时新挂载的 <img> 还没下载完就开始动画，
 // 导致前景大卡只剩深色底色 + 文字 overlay 的视觉空窗。
