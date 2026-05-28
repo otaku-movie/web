@@ -1,0 +1,76 @@
+# シネコ 官网 CI
+# - 推送到主分支或向主分支发起 PR 时触发
+# - build 任务负责 Nuxt 构建与类型检查，保证主干随时可发布
+# - commitlint 任务仅在 PR 时跑，校验 PR 范围内每条 commit 是否符合 Conventional Commits
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# 同一分支/PR 上若有新的 push，自动取消还在跑的旧任务，节省 Actions 时长
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (Nuxt)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Node 版本与 @types/node、Nuxt 4 支持范围对齐，使用 actions 自带 npm 缓存加速依赖安装
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 使用 lockfile 严格安装，保证 CI 与开发机依赖一致
+      - name: Install dependencies
+        run: npm ci
+
+      # nuxt typecheck 会按需拉取 vue-tsc，本地无该脚本时也不会失败
+      - name: Type check
+        run: npm run typecheck --if-present
+
+      # 真正的构建产物校验：能 build 通过才允许合入
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+  commitlint:
+    name: Commitlint (PR)
+    runs-on: ubuntu-latest
+    # 仅 PR 触发；push 到主分支的历史已无法被 commitlint 拦截，不再做校验
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 5
+    steps:
+      # fetch-depth: 0 才能拿到 base...head 之间的完整提交历史，供 commitlint 遍历
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # 校验本 PR 区间内每条 commit message，规则见仓库根 commitlint.config.cjs
+      - name: Validate PR commit messages
+        run: |
+          npx commitlint \
+            --from ${{ github.event.pull_request.base.sha }} \
+            --to ${{ github.event.pull_request.head.sha }} \
+            --verbose
