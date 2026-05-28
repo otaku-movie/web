@@ -95,7 +95,7 @@
                 class="poster__art-layer"
                 :class="{ 'is-active': deckItems[slot]?.id === item.id }"
                 :src="item.cover"
-                :alt="displayTitle(item)"
+                alt=""
                 compact
                 loading="eager"
               />
