@@ -9,8 +9,10 @@
   },
   "scripts": {
     "build": "nuxt build --dotenv .env.production",
+    "build:worker": "node --max-old-space-size=4096 ./node_modules/nuxt/bin/nuxt.mjs build --preset cloudflare_module --dotenv .env.production",
     "build:pages": "node --max-old-space-size=4096 ./node_modules/nuxt/bin/nuxt.mjs build --preset cloudflare-pages --dotenv .env.production",
     "dev": "nuxt dev --port 3001 --dotenv .env.development",
+    "deploy:worker": "npx wrangler deploy",
     "deploy:pages": "npx wrangler pages deploy dist --project-name=otaku-movie-web",
     "generate": "nuxt generate --dotenv .env.production",
     "preview": "nuxt preview",

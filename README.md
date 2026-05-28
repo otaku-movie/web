@@ -73,3 +73,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Cloudflare Workers（web2）
+
+控制台服务名须与 `wrangler.toml` 中的 `name` 一致。
+
+| 字段 | 值 |
+|------|-----|
+| 构建命令 | `npm run build:worker` |
+| 部署命令 | `npx wrangler deploy` |
+| 环境变量 | `NODE_VERSION=22.18.0` |
