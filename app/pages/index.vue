@@ -344,7 +344,7 @@ useSeoMeta({
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $surface-card;
+  background: $surface-canvas;
   color: $text-primary;
 }
 
@@ -364,10 +364,8 @@ useSeoMeta({
 }
 
 :global(html[data-theme='dark']) .home-hero {
-  background:
-    radial-gradient(760px 460px at 84% 8%, rgba(92, 59, 255, 0.28), transparent 58%),
-    radial-gradient(620px 360px at 10% 4%, rgba(25, 137, 250, 0.13), transparent 62%),
-    linear-gradient(180deg, #070b12 0%, #0c1424 72%, #0a1018 100%);
+  /* bilibili 流派：完全 flat 纯灰底，让 chip/CTA/海报自己讲故事 */
+  background: $surface-canvas;
 }
 
 .home-hero__inner {
@@ -401,6 +399,25 @@ useSeoMeta({
 :global(html[data-theme='light']) .home-hero__chip,
 :global(html[data-theme='light']) .home-hero__cta-ghost {
   box-shadow: 0 10px 28px -22px rgba(15, 23, 42, 0.35);
+}
+
+/* dark 下 chip 走 bilibili "未选中标签"风：半透明白底，无描边 */
+:global(html[data-theme='dark']) .home-hero__chip {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: transparent;
+  color: $text-secondary;
+}
+
+/* ghost CTA 走 bilibili 同款半透明白：透明感更轻，比 Netflix 的不透明灰更通透 */
+:global(html[data-theme='dark']) .home-hero__cta-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
+  color: #ffffff;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: transparent;
+  }
 }
 
 .home-hero__chip-dot {
@@ -528,12 +545,17 @@ useSeoMeta({
 
 .poster {
   position: absolute;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
-  background: #0b0f1f;
+  /* bilibili 视频卡用 12px 圆角；占位走中性灰，避免引入紫蓝色调 */
+  background: #2a2b30;
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   text-decoration: none;
   color: inherit;
+}
+
+:global(html[data-theme='dark']) .poster {
+  background: $surface-card-hover;
 }
 
 .poster--deck {
@@ -814,7 +836,22 @@ $swap-duration: 0.55s;
 }
 
 :global(html[data-theme='dark']) .home-features {
-  background: #0a1018;
+  /* features 区比 hero 亮一档 + 顶部细分割线，与上面 hero 视觉分段 */
+  background: #1c1d20;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* feature-card 在亮一档的 section 底上再亮一档，确保卡片明显浮出 */
+:global(html[data-theme='dark']) .feature-card {
+  background: $surface-card-hover;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background: #34353a;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
 }
 
 .home-features__head {

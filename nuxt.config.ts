@@ -26,6 +26,10 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
 
   vite: {
+    /* marked 在 download/legal 页使用；预打包避免 dev 时 runtime 发现依赖触发整页重载后白屏/黑屏 */
+    optimizeDeps: {
+      include: ['marked']
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -69,7 +73,18 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { name: 'theme-color', content: '#1989fa' }
+        { name: 'theme-color', content: '#1989fa' },
+        { name: 'color-scheme', content: 'dark light' }
+      ],
+      /* 关键路径 inline CSS：在 main.scss 还未到达前就把 html/body 背景定下来，
+       * 避免 dev / 慢网络下首屏闪白或闪黑（FOUC）。
+       * 数值与 _theme.scss 中 --mw-surface-canvas 保持一致。 */
+      style: [
+        {
+          innerHTML:
+            "html{background-color:#f7f8fa;color:#1f2937;color-scheme:light}html[data-theme='dark']{background-color:#17181a;color:#fff;color-scheme:dark}body,#__nuxt,[class$='-page']{margin:0;min-height:100vh;background-color:inherit;color:inherit}",
+          tagPosition: 'head'
+        }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/brand-icon.png' },

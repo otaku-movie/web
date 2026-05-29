@@ -2,10 +2,13 @@ export type Theme = 'light' | 'dark'
 
 /**
  * 全站浅/深主题。
- *  - mw_theme cookie 只保存用户手动选择
- *  - 没有 cookie 时跟随系统 prefers-color-scheme
- *  - app.vue 中的 head inline script 会在首屏尽早设置 <html data-theme>
+ *  - 默认 `light`，不再跟随系统 prefers-color-scheme
+ *  - 用户通过 ThemeToggle 切换后写入 `mw_theme` cookie，刷新/SSR 同步保持
+ *  - app.vue 中的 head inline script 会在首屏尽早设置 <html data-theme>，
+ *    避免主题闪烁（FOUC）
  */
+const DEFAULT_THEME: Theme = 'light'
+
 export const useTheme = () => {
   const cookie = useCookie<Theme | null>('mw_theme', {
     default: () => null,
@@ -13,29 +16,11 @@ export const useTheme = () => {
     sameSite: 'lax'
   })
 
-  const systemTheme = useState<Theme>('mw-system-theme', () => 'light')
-
-  if (import.meta.client) {
-    const media = window.matchMedia('(prefers-color-scheme: dark)')
-    const syncSystemTheme = () => {
-      systemTheme.value = media.matches ? 'dark' : 'light'
-    }
-
-    syncSystemTheme()
-
-    onMounted(() => {
-      media.addEventListener('change', syncSystemTheme)
-    })
-    onBeforeUnmount(() => {
-      media.removeEventListener('change', syncSystemTheme)
-    })
-  }
-
+  /* 主题切换暂时下线：dark 模式待优化前，全站强制 light，忽略 mw_theme cookie。
+   * 恢复时把 get 改回读取 cookie 即可：
+   *   get: () => (cookie.value === 'dark' || cookie.value === 'light' ? cookie.value : DEFAULT_THEME) */
   const theme = computed<Theme>({
-    get: () => {
-      if (cookie.value === 'dark' || cookie.value === 'light') return cookie.value
-      return systemTheme.value
-    },
+    get: () => DEFAULT_THEME,
     set: (val) => {
       cookie.value = val
     }
@@ -49,11 +34,5 @@ export const useTheme = () => {
     theme.value = val
   }
 
-  const resetTheme = () => {
-    cookie.value = null
-  }
-
-  const usingSystemTheme = computed(() => cookie.value !== 'dark' && cookie.value !== 'light')
-
-  return { theme, toggle, setTheme, resetTheme, usingSystemTheme }
+  return { theme, toggle, setTheme }
 }

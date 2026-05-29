@@ -158,6 +158,26 @@ const downloadable = computed(() => Boolean(props.item?.downloadUrl))
   box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
 }
 
+/* dark 下走 bilibili 卡片风：与底色几乎贴近，hover 时升一档灰，无明显边框 */
+:global(html[data-theme='dark']) .platform-card {
+  background: $surface-card;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: $surface-card-hover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  &.is-active {
+    background: $surface-card-hover;
+    border-color: $brand-primary;
+    box-shadow:
+      0 0 0 1px rgba(25, 137, 250, 0.5),
+      0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
 .platform-card__title {
   min-width: 0;
   display: flex;

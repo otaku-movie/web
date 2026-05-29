@@ -11,7 +11,8 @@
       <nav class="site-header__nav">
         <NuxtLink to="/" class="site-header__link">{{ t('nav.home') }}</NuxtLink>
         <NuxtLink to="/download" class="site-header__link">{{ t('nav.download') }}</NuxtLink>
-        <ThemeToggle :tone="blend ? (theme === 'dark' ? 'dark' : 'light') : tone" />
+        <!-- 主题切换暂时下线（dark 模式待优化），全站固定 light；恢复时取消注释即可 -->
+        <!-- <ThemeToggle :tone="blend ? (theme === 'dark' ? 'dark' : 'light') : tone" /> -->
         <LangSwitch :dark="blend ? theme === 'dark' : tone === 'dark'" />
       </nav>
     </div>
@@ -62,8 +63,9 @@ if (import.meta.client) {
   position: sticky;
   top: 0;
   z-index: 50;
-  transition: background 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+  /* 注意：绝不能 transition backdrop-filter —— 逐帧重算全宽 sticky 头部的高斯模糊，
+   * 在集显上会把合成线程锁死，整个标签页卡到 F12 都打不开。模糊值瞬切即可。 */
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .site-header__inner {
@@ -100,9 +102,10 @@ if (import.meta.client) {
 }
 
 :global(html[data-theme='dark']) .site-header__brand-mark {
+  /* dark 下 logo 保持白底，阴影柔和不抢戏 */
   background: #ffffff;
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .site-header__brand-img {
@@ -195,9 +198,10 @@ if (import.meta.client) {
 }
 
 .site-header--blend-dark.is-scrolled {
-  background: rgba(8, 14, 26, 0.72);
+  /* 滚动后叠半透明 bilibili 同色温灰 */
+  background: rgba(23, 24, 26, 0.88);
   border-bottom-color: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 6px 20px -16px rgba(0, 0, 0, 0.6);
+  box-shadow: none;
 }
 
 @media (max-width: $breakpoint-mobile) {

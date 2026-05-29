@@ -174,7 +174,11 @@ const formattedTitle = computed(() => {
 const releaseHtml = computed(() => {
   const note = activeItem.value?.releaseNote
   if (!note) return ''
-  return marked.parse(note) as string
+  try {
+    return marked.parse(note) as string
+  } catch {
+    return note
+  }
 })
 
 onMounted(async () => {
@@ -196,7 +200,7 @@ useSeoMeta({
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $surface-card;
+  background: $surface-canvas;
   color: $text-primary;
 }
 
@@ -216,10 +220,8 @@ useSeoMeta({
 }
 
 :global(html[data-theme='dark']) .dl-hero {
-  background:
-    radial-gradient(760px 460px at 84% 8%, rgba(92, 59, 255, 0.28), transparent 58%),
-    radial-gradient(620px 360px at 10% 4%, rgba(25, 137, 250, 0.13), transparent 62%),
-    linear-gradient(180deg, #070b12 0%, #0c1424 72%, #0a1018 100%);
+  /* bilibili 同款 flat 灰底 */
+  background: $surface-canvas;
 }
 
 .dl-hero__inner {
@@ -252,6 +254,13 @@ useSeoMeta({
 
 :global(html[data-theme='light']) .dl-hero__chip {
   box-shadow: 0 10px 28px -22px rgba(15, 23, 42, 0.35);
+}
+
+/* dark 下 chip 走 bilibili 同款半透明白：极轻，无描边 */
+:global(html[data-theme='dark']) .dl-hero__chip {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: transparent;
+  color: $text-secondary;
 }
 
 .dl-hero__chip-dot {
@@ -316,6 +325,19 @@ useSeoMeta({
   box-shadow: 0 10px 28px -22px rgba(15, 23, 42, 0.35);
 }
 
+/* dark 下平台 pill 走 bilibili 标签风：半透明白 + is-current 用品牌色填充（参考 b 站"已关注"高亮） */
+:global(html[data-theme='dark']) .dl-hero__platform {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: transparent;
+  color: $text-primary;
+
+  &.is-current {
+    background: rgba(25, 137, 250, 0.2);
+    border-color: rgba(25, 137, 250, 0.6);
+    box-shadow: none;
+  }
+}
+
 .dl-hero__platform-logo {
   width: 28px;
   height: 28px;
@@ -371,15 +393,16 @@ useSeoMeta({
   height: 520px;
   border-radius: 42px;
   padding: 10px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85) 0%, rgba(241, 245, 255, 0.9) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  /* dark 默认金属灰；light 在下方覆写，避免 CSS 变量写在 gradient 里引发 dev 样式异常 */
+  background: linear-gradient(160deg, #2a2b30 0%, #202126 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: $shadow-poster;
   z-index: 2;
 }
 
-:global(html[data-theme='dark']) .dl-mock {
-  background: linear-gradient(160deg, rgba(40, 52, 84, 0.85) 0%, rgba(22, 30, 50, 0.95) 100%);
-  border-color: rgba(255, 255, 255, 0.08);
+:global(html[data-theme='light']) .dl-mock {
+  background: linear-gradient(160deg, #ffffff 0%, #f1f5ff 100%);
+  border-color: rgba(15, 23, 42, 0.06);
 }
 
 .dl-mock__notch {
@@ -423,7 +446,8 @@ useSeoMeta({
 }
 
 :global(html[data-theme='dark']) .dl-mock__screen {
-  background: linear-gradient(180deg, #121a2a 0%, #0c1424 100%);
+  /* 屏幕内层走与 canvas 同色，让海报缩略图自身的颜色突出 */
+  background: $surface-canvas;
 }
 
 .dl-mock__statusbar {
@@ -597,7 +621,7 @@ useSeoMeta({
   flex-shrink: 0;
 }
 
-/* phone 周边光晕 */
+/* phone 周边光晕：light 下作装饰，dark 下大幅减弱避免"雾化"整张图 */
 .dl-mock__halo {
   position: absolute;
   border-radius: 50%;
@@ -623,8 +647,9 @@ useSeoMeta({
   }
 }
 
+/* dark 下完全去掉手机周边的紫/蓝光晕，避免给已经偏暗的整页"加雾" */
 :global(html[data-theme='dark']) .dl-mock__halo {
-  opacity: 0.45;
+  display: none;
 }
 
 /* Hero 整体右上角光斑（与首页一致） */
@@ -650,7 +675,9 @@ useSeoMeta({
 }
 
 :global(html[data-theme='dark']) .dl-section {
-  background: #0a1018;
+  /* 与上面 hero 视觉分段：亮一档 + 顶部细分割线 */
+  background: #1c1d20;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .dl-section__inner {
@@ -707,7 +734,7 @@ useSeoMeta({
 }
 
 :global(html[data-theme='dark']) .dl-notes-section {
-  background: #0a1018;
+  background: $surface-canvas;
 }
 
 .dl-notes-section__inner {

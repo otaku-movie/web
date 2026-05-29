@@ -43,8 +43,16 @@ const supportEmail = computed(() => String(pub.supportEmail || '').trim())
 <style lang="scss" scoped>
 .site-footer {
   margin-top: auto;
+  /* light 下走深蓝（与品牌色呼应），dark 下覆写到纯黑（Netflix/Abema 同款 footer） */
   background: #0f172a;
   color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid transparent;
+}
+
+:global(html[data-theme='dark']) .site-footer {
+  /* 比 canvas 暗一档作为页脚，明显与内容区分段 */
+  background: #131418;
+  border-top-color: rgba(255, 255, 255, 0.06);
 }
 
 .site-footer__inner {

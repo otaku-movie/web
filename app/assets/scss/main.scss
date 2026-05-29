@@ -8,8 +8,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: $surface-canvas;
-  color: $text-primary;
+  /* fallback 色：CSS 变量尚未就绪时也不闪白/闪黑 */
+  background-color: var(--mw-surface-canvas, #f7f8fa);
+  color: var(--mw-text-primary, #1f2937);
   // Inter 用于拉丁文与数字，Noto Sans SC/JP 处理中日，回退到系统优秀字体
   font-family:
     'Inter', -apple-system, BlinkMacSystemFont,
@@ -34,10 +35,13 @@ h3 {
   letter-spacing: -0.01em;
 }
 
-#app-root {
+#app-root,
+#__nuxt {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: inherit;
+  color: inherit;
 }
 
 a {
@@ -106,6 +110,19 @@ ol {
     }
   }
 
+  /* dark 下 ghost 走 bilibili 同款半透明白：通透感更强，CTA 才有色
+   * 注意：main.scss 是全局样式表，不能用 :global()（那是 scoped 专用），直接用 html[data-theme] */
+  html[data-theme='dark'] &--ghost {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: transparent;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: transparent;
+    }
+  }
+
   &--dark {
     background: $surface-inverse;
     color: #fff;
@@ -141,11 +158,16 @@ ol {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  background: rgba(25, 137, 250, 0.1);
+  background: var(--mw-tag-brand-bg);
   color: $brand-primary;
 
   &--warning {
-    background: rgba(255, 165, 0, 0.12);
+    background: var(--mw-tag-warning-bg);
     color: $accent-warning;
   }
+}
+
+/* dark 下 brand tag 用品牌蓝文字（不再过度 cyan），与 CTA 颜色一致 */
+html[data-theme='dark'] .mw-tag {
+  color: $brand-primary;
 }

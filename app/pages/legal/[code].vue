@@ -169,6 +169,18 @@ useSeoMeta({
   box-shadow: 0 28px 70px -32px rgba(15, 23, 42, 0.18);
 }
 
+/* dark 下走 bilibili 卡片风：与底色几乎贴近 + 隐形边框 + 轻投影 */
+:global(html[data-theme='dark']) .legal-card {
+  background: $surface-card;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(html[data-theme='dark']) .legal-card__head {
+  background: $surface-card-hover;
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
 .legal-card__head {
   padding: 36px 40px 24px;
   border-bottom: 1px solid $border-subtle;
